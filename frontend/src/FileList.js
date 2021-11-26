@@ -5,13 +5,27 @@ import { Link } from 'react-router-dom';
 
 function FileList({ serviceStore }) {
 	const [fileList, setFileList] = useState([]);
+    const [lastId, setLastId] = useState('');
+    const [isMore, setIsMore] = useState(true);
 
 	useEffect(() => {
         if (!serviceStore.isLogined) return;
 		axios.get(process.env.REACT_APP_REQUEST_URL + '/api/file/get-list').then((response) => {
-			setFileList(response.data.data);
+            const list = response.data.data;
+			setFileList(s => [...s, ...list]);
+            setLastId(list[list.length - 1]._id);
+            if (list.length < 25) setIsMore(false);
 		});
-	}, [serviceStore.isLogined, setFileList]);
+	}, [serviceStore.isLogined, setFileList, setLastId, setIsMore]);
+
+    const onClick = () => {
+        axios.get(process.env.REACT_APP_REQUEST_URL + '/api/file/get-list', { startId: lastId }).then((response) => {
+            const list = response.data.data;
+			setFileList(s => [...s, ...list]);
+            setLastId(list[list.length - 1]._id);
+            if (list.length < 25) setIsMore(false);
+		});
+    };
 
 	return (
 		<div className="container m-auto is-max-desktop">
@@ -23,6 +37,7 @@ function FileList({ serviceStore }) {
 					</div>
 				);
 			})}
+            { isMore && <button className="button is-primary is-fullwidth" onClick={onClick}>More</button> }
 		</div>
 	);
 }

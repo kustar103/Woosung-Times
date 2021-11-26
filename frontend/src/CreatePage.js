@@ -41,7 +41,7 @@ function CreatePage() {
     const onTextChange = () => {
 		setData({
 			...data,
-			pageContent: editorRef.current.getInstance().getHTML(),
+			pageContent: editorRef.current.getInstance().getMarkdown(),
 		});
 	};
 

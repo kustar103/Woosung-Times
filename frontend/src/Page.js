@@ -4,6 +4,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import QRCode from 'qrcode.react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
+import { Viewer } from '@toast-ui/react-editor';
 
 function Page({ serviceStore }) {
 	const { pageId } = useParams();
@@ -57,7 +58,6 @@ function Page({ serviceStore }) {
 				display: 'flex',
 				flexDirection: 'column',
 				alignItems: 'center',
-				textAlign: 'center',
 				marginBottom: '100px',
 			}}>
 			<h1 className="title is-1" style={{ margin: '10px' }}>
@@ -107,8 +107,7 @@ function Page({ serviceStore }) {
                     />
 				</>
 			)}
-			{pageData.pageContent && <div dangerouslySetInnerHTML={{ __html: pageData.pageContent }}></div>}
-
+			{pageData.pageContent && <div className="box m-4"><Viewer initialValue={pageData.pageContent}></Viewer></div>}
 			<button className="button is-primary is-light" onClick={() => setQrFlag(true)} style={{ margin: '30px' }}>
 				Share
 			</button>

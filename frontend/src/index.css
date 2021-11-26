@@ -1,22 +1,46 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;700&display=swap');*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');
 
 * {
-    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+	font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
-body {
+
+html, body {
     margin: 0;
-    margin-top: 20px !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+}
+
+#wrap {
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+}
+
+#root {
+	margin: 0;
+	padding-top: 20px !important;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    padding-bottom: 100px !important;
 }
 
 @media only screen and (max-width: 1024px) {
-	body {
-		margin: 1rem !important;
+	#root {
+		padding: 1rem;
 	}
 }
 
+footer {
+	width: 100%;
+	height: 50px;
+	bottom: 0px;
+	position: absolute;
+    font-size: .8rem;
+}
+
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+p {
+    font-size: 1rem !important;
 }

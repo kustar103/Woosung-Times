@@ -35,6 +35,6 @@ export const deleteFile = (fileHash) => {
 };
 
 export const getFileList = (start_id, limit) => {
-    const query = start_id ? { _id: { $lte: start_id } } : {};
+    const query = start_id ? { _id: { $lt: start_id } } : {};
     return FileModel.find(query).limit(limit).select('-fileLocation');
 };

@@ -18,6 +18,7 @@ import RecoverPw from './RecoverPw';
 import FileList from './FileList';
 import File from './File';
 
+
 axios.interceptors.response.use(
 	(response) => {
 		errorHandler(response.data.data);
@@ -31,14 +32,13 @@ axios.interceptors.response.use(
 
 const serviceStore = new ServiceStore();
 
-
 (async () => {
-    if (localStorage.getItem('isLogined')) {
-        const result = await refreshToken();
-        if (!result) return localStorage.setItem('isLogined', '');
-        serviceStore.setIsLogined(true);
-        serviceStore.setUserId(localStorage.getItem('userId'));
-    }
+	if (localStorage.getItem('isLogined')) {
+		const result = await refreshToken();
+		if (!result) return localStorage.setItem('isLogined', '');
+		serviceStore.setIsLogined(true);
+		serviceStore.setUserId(localStorage.getItem('userId'));
+	}
 })();
 
 const MainPage = inject('serviceStore')(
@@ -67,8 +67,8 @@ const MainPage = inject('serviceStore')(
 						</a>
 						<br />
 						<Link to="/create-key">가입 코드 생성</Link>
-                        <br />
-                        <Link to="/file">파일 관리</Link>
+						<br />
+						<Link to="/file">파일 관리</Link>
 					</>
 				)}
 				<br />
@@ -91,8 +91,8 @@ function App() {
 			<Route path="/signup" component={SignUp} exact />
 			<Route path="/create-key" component={CreateKey} exact />
 			<Route path="/recover/:recoverKey" component={RecoverPw} exact />
-            <Route path="/file" component={FileList} exact />
-            <Route path="/file/:fileHash" component={File} exact />
+			<Route path="/file" component={FileList} exact />
+			<Route path="/file/:fileHash" component={File} exact />
 		</Provider>
 	);
 }

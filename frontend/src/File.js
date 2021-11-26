@@ -39,7 +39,7 @@ function File({ serviceStore }) {
 		<div className="container m-auto is-max-desktop">
 			<h2 className="title has-text-centered">파일 상세 정보</h2>
             <button className="button is-primary is-light" style={{ marginLeft: '1rem' }} onClick={onDeleteClick}>파일 삭제</button>
-			<p style={{ margin: '1rem' }}>파일 해시(SHA-256): {fileHash}</p>
+			<p style={{ margin: '1rem', overflow: 'auto' }}>파일 해시(SHA-256): {fileHash}</p>
 			<p style={{ margin: '1rem' }}>최초 업로드 이름: {fileData.originalName}</p>
 			<p style={{ margin: '1rem' }}>파일 타입: {fileData.fileType}</p>
 			<p style={{ margin: '1rem' }}>
